@@ -1,4 +1,7 @@
 
+        
+
+
 class MockIndex:
 
     def get_dictionary(self):
@@ -24,7 +27,7 @@ class MockIndex:
         }
         return id2tf
 
-    def query(self, query, rules, results_requested):
+    def query(self, query, results_requested):
         return ((76674, -5.605415176179421), (26759, -5.830037530724974))
 
     def document(self, docid):
@@ -54,3 +57,9 @@ class MockIndex:
 
     def close(self):
         pass
+
+class MockQueryEnv:
+
+    def query(self, query,  results_requested):
+        index = MockIndex()
+        return index.query(query, results_requested)

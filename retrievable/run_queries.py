@@ -8,8 +8,6 @@ from retrievable.trec import trec_eval
 from retrievable.parsl import run_queries
 from retrievable.config import Config
 
-logging.basicConfig(level=logging.DEBUG)
-
 
 def main(args=None):
     """
@@ -21,10 +19,16 @@ def main(args=None):
     parser = argparse.ArgumentParser(description='Query runner.')
     parser.add_argument('--config-file', dest='config_file',
                         default='config/scorers.yaml')
+    parser.add_argument('--debug', dest='debug', action='store_true')
 
     args = parser.parse_args()
 
     overwrite = False
+
+    if args.debug: 
+        logging.basicConfig(level=logging.INFO)
+    else:
+        logging.basicConfig(level=logging.DEBUG)
 
     cfg = Config()
     cfg.read_config(args.config_file)

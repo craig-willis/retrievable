@@ -5,13 +5,9 @@ from collections import Counter
 
 from parsl.app.app import python_app
 from parsl.configs.local_threads import config
-# from parsl import set_stream_logger, NullHandler
 
-# set the stream logger to print debug messages
-# set_stream_logger()
-
+parsl.set_stream_logger()
 parsl.load(config)
-
 
 @python_app
 def run_queries(index_path, scorer_module, scorer_class, params, queries=[]):
