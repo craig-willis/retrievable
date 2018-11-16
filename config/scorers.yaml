@@ -1,0 +1,18 @@
+stopper: data/stoplist.kba
+index_root: /data/indexes
+run_prefix: base
+output_dir: ./output
+scorers:
+  - name: dir
+    module: retrievable
+    class: ScorerDirichlet
+    params:
+#       mu : [500,1000,1500,2000,2500]
+       mu : [500]
+
+collections:
+  - name: ap
+    index: ap.temporal
+    queries:
+      title: ./topics/topics.ap.51-150.indri
+    qrels: ./qrels/qrels.ap.51-150
