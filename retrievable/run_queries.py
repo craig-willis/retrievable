@@ -35,6 +35,7 @@ def main(args=None):
 
     run_prefix = cfg.get_run_prefix()
     output_dir = cfg.get_output_dir()
+    eval_dir = cfg.get_eval_dir()
 
     for col in cfg.get_collections():
         logging.info("Processing collection %s" % col['name'])
@@ -65,12 +66,12 @@ def main(args=None):
                     param_str = params_str_list[idx]
 
                     # Create output file
-                    results_file = "{}/{}/{}/{}/{}.out".format(
-                            output_dir, col['name'], query_file,
+                    results_file = "{}/{}/{}/{}.out".format(
+                            output_dir, col['name'], 
                             scorer['name'], param_str)
-                    eval_file = "{}/{}/{}/{}/{}.eval".format(
+                    eval_file = "{}/{}/{}/{}.eval".format(
                             output_dir, col['name'],
-                            query_file, scorer['name'], param_str)
+                            scorer['name'], param_str)
 
                     # skip if exists
                     if not overwrite and os.path.exists(results_file):

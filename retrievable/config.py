@@ -16,6 +16,9 @@ class Config:
     def get_output_dir(self):
         return self.cfg['output_dir']
 
+    def get_eval_dir(self):
+        return self.cfg['eval_dir']
+
     def get_index_root(self):
         return self.cfg['index_root']
 
