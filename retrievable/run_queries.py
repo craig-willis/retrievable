@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+import parsl
 import pyndri
 
 from retrievable.query import list_from_xml
@@ -17,18 +18,18 @@ def main(args=None):
     """
 
     parser = argparse.ArgumentParser(description='Query runner.')
-    parser.add_argument('--config-file', dest='config_file',
+    parser.add_argument('-c', '--config-file', dest='config_file',
                         default='config/scorers.yaml')
-    parser.add_argument('--debug', dest='debug', action='store_true')
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true')
 
     args = parser.parse_args()
 
     overwrite = False
 
-    if args.debug: 
-        logging.basicConfig(level=logging.INFO)
-    else:
+    if args.verbose: 
         logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.INFO)
 
     cfg = Config()
     cfg.read_config(args.config_file)
