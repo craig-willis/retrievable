@@ -21,7 +21,8 @@ setup(
     packages=find_packages(include=['retrievable', 'retrievable.*']),
     entry_points={
         'console_scripts': [
-            'run_queries = retrievable.run_queries:main'
+            'run-queries = retrievable.run_queries:main',
+            'create-ts = retrievable.create_ts:main'
         ]
     },
     install_requires=[

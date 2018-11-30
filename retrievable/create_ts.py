@@ -10,25 +10,19 @@ def main(args=None):
 
     parser = argparse.ArgumentParser(
             description='Create term timeseries index')
-    parser.add_argument('--start-time', dest='start_time', type=int)
-    parser.add_argument('--end-time', dest='end_time', type=int)
-    parser.add_argument('--interval', dest='interval', type=int)
     parser.add_argument('--index', dest='index')
+    parser.add_argument('--output', dest='output')
 
     args = parser.parse_args()
 
     index = pyndri.Index(args.index)
-    # start = args.start_time
-    # end = args.end_time
-    # interval = args.interval
-    # bins = (end-start)/interval
 
-    print('Get dictionary')
+    print('Reading dictionary...')
     token2id, id2token, id2df = index.get_dictionary()
 
     doc_ids = range(index.document_base(), index.maximum_document())
 
-    print('Building index')
+    print('Building timeseries...')
     ts = {}
     for doc_id in tqdm(doc_ids):
 
@@ -48,17 +42,14 @@ def main(args=None):
                 ts[date][token_id] += 1
 
     t0 = time.time()
-    print('Creating dataframe')
+    print('Creating dataframe...')
     df = pd.DataFrame.from_dict(ts, orient='index', dtype=int)
     t1 = time.time()
     print(t1 - t0)
 
     t0 = time.time()
-    print('Serializing dataframe')
-    # df.to_pickle("ap-tsindex.pkl", compression="gzip", protocol=2)
-    df.to_csv("ap-tsindex.csv", compression="gzip")
-    # df.to_parquet('ap-tsindex.parquet.gzip', compression='gzip')
-    # df.to_json('ap-tsindex.json.gzip', orient='index', compression='gzip')
+    print('Serializing dataframe...')
+    df.to_csv(args.output, compression="gzip")
     t1 = time.time()
     print(t1 - t0)
 
