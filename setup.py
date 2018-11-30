@@ -10,7 +10,8 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='retrievable',
+    name='retrievable-retrievable',
+    namespace_pacakges=['retrievable'],
     version='0.1.0',
     description='',
     long_description=readme,
