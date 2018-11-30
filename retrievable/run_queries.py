@@ -71,7 +71,7 @@ def main(args=None):
                             output_dir, col['name'], 
                             scorer['name'], param_str)
                     eval_file = "{}/{}/{}/{}.eval".format(
-                            output_dir, col['name'],
+                            eval_dir, col['name'],
                             scorer['name'], param_str)
 
                     # skip if exists
@@ -82,6 +82,10 @@ def main(args=None):
                     results_dir = os.path.dirname(results_file)
                     if not os.path.exists(results_dir):
                         os.makedirs(results_dir)
+
+                    trec_eval_dir = os.path.dirname(eval_file)
+                    if not os.path.exists(trec_eval_dir):
+                        os.makedirs(trec_eval_dir)
 
                     # For each col (index + topics + qrels), scorer, paramset
                     r = []
