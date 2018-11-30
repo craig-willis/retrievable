@@ -16,7 +16,7 @@ def test_run_queries():
             total_terms = index.total_terms()
             id2tf = index.get_term_frequencies()
 
-            queries = list_from_xml('tests/test_queries.yaml', token2id,
+            queries = list_from_xml('retrievable/tests/test_queries.yaml', token2id,
                                     id2tf, total_terms)
 
             (num, text, qv, cp) = queries[0]

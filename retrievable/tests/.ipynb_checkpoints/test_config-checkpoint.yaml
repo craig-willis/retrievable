@@ -1,0 +1,18 @@
+stopper: data/stoplist.kba
+index_root: /data/indexes
+run_prefix: test_prefix
+output_dir: test_output
+scorers:
+  - name: test_scorer
+    module: tests
+    class: TestScorer
+    params:
+       x : [1,2,3]
+       y : [4,5,6]
+
+collections:
+  - name: test_collection
+    index: test_index
+    queries:
+      title: test_topics
+    qrels: test_qrels
