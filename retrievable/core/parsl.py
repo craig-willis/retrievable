@@ -9,6 +9,7 @@ from parsl.configs.local_threads import config
 parsl.set_stream_logger()
 parsl.load(config)
 
+
 @python_app
 def run_queries(index_path, scorer_module, scorer_class, params, queries=[]):
     """
@@ -31,7 +32,7 @@ def run_queries(index_path, scorer_module, scorer_class, params, queries=[]):
         rule = 'method:dirichlet,mu:%s' % params['mu']
         query_env = pyndri.QueryEnvironment(index, rules=(rule,))
         hits = query_env.query(queries[1], results_requested=1000)
-        #hits = index.query(queries[1], rules=(rule,), results_requested=1000)
+        # hits = index.query(queries[1], rules=(rule,), results_requested=1000)
 
         results = []
         for doc_id, score in hits:

@@ -14,9 +14,8 @@ def main(args=None):
             description='Create term timeseries index')
     parser.add_argument('-i', '--index', dest='index', help='Input index path')
     parser.add_argument('-o', '--output', dest='output', help='Output path')
-    parser.add_argument("-v", "--verbose", help='Verbose logging', 
-                    action="store_true")
-
+    parser.add_argument("-v", "--verbose", help='Verbose logging',
+                        action="store_true")
 
     args = parser.parse_args()
 

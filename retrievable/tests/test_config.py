@@ -1,4 +1,4 @@
-from retrievable.config import Config
+from retrievable.core.config import Config
 
 
 def test_config():

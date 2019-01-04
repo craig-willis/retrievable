@@ -1,13 +1,12 @@
 import argparse
 import logging
 import os
-import parsl
 import pyndri
 
-from retrievable.query import list_from_xml
-from retrievable.trec import trec_eval
-from retrievable.parsl import run_queries
-from retrievable.config import Config
+from retrievable.core.query import list_from_xml
+from retrievable.core.trec import trec_eval
+from retrievable.core.parsl import run_queries
+from retrievable.core.config import Config
 
 
 def main(args=None):
@@ -26,7 +25,7 @@ def main(args=None):
 
     overwrite = False
 
-    if args.verbose: 
+    if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
     else:
         logging.basicConfig(level=logging.INFO)
@@ -68,7 +67,7 @@ def main(args=None):
 
                     # Create output file
                     results_file = "{}/{}/{}/{}.out".format(
-                            output_dir, col['name'], 
+                            output_dir, col['name'],
                             scorer['name'], param_str)
                     eval_file = "{}/{}/{}/{}.eval".format(
                             eval_dir, col['name'],

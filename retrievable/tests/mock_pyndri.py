@@ -1,7 +1,3 @@
-
-        
-
-
 class MockIndex:
 
     def get_dictionary(self):
@@ -57,6 +53,7 @@ class MockIndex:
 
     def close(self):
         pass
+
 
 class MockQueryEnv:
 
